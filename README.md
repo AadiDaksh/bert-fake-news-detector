@@ -1,91 +1,66 @@
-# BERT Fake News Detector
+BERT Fake News Detector
 
-A **DistilBERT-based fake news detection system**.  
-Users can train their own model and predict news as **REAL** or **FAKE**.
+This project uses DistilBERT to detect whether news is REAL or FAKE. Users can train their own model and make predictions on new news text.
 
----
+Project Structure
 
-## Folder Structure
+bert_fake_news.py – Script for training the model.
 
-bert-fake-news-detector/
-├── bert_fake_news.py # Training script
-├── predict_fake_news.py # Prediction script
-├── data/ # CSV datasets
-│ ├── True.csv # Real news examples
-│ └── Fake.csv # Fake news examples
-├── results/ # Folder for trained model (created automatically)
-├── README.md # This file
-└── .gitignore # Ignores results/ and cache files
+predict_fake_news.py – Script for predicting news.
 
-yaml
-Copy code
+data/ – CSV files for training (True.csv for real news, Fake.csv for fake news).
 
-**Note:** The `results/` folder is empty initially and will be created automatically after training.
+results/ – Folder where the trained model and tokenizer are saved (created automatically).
 
----
+.gitignore – Excludes results/ and cache files.
 
-## Installation
+README.md – Instructions.
 
-Recommended: use **Conda**:
+Installation
 
-```bash
+Using Conda:
+
 conda create -n fake_news_venv python=3.10
 conda activate fake_news_venv
 pip install pandas scikit-learn torch transformers datasets
-Training the Model
-Place your CSV files in the data/ folder:
 
-True.csv → REAL news
+Training
 
-Fake.csv → FAKE news
+Place CSV files in data/.
 
-Run the training script:
+Run:
 
-bash
-Copy code
 python bert_fake_news.py
+
+
 Default: 100 samples per class, 2 epochs.
 
-Trained model and tokenizer will be saved in results/.
+Model and tokenizer saved in results/.
 
-Predicting News
-Use the trained model in results/ with the prediction script:
+Predicting
 
-bash
-Copy code
+Run:
+
 python predict_fake_news.py
-The script supports:
 
-Predefined test examples
 
-Interactive input (type news text to predict)
+Supports predefined examples or interactive input.
 
-Output shows:
-
-Predicted label: REAL news or FAKE news
-
-Probabilities for each class
+Outputs predicted label (REAL or FAKE) and probabilities.
 
 Notes
-Increase samples and epochs in bert_fake_news.py for better accuracy.
 
-results/ is created automatically and should not be tracked in Git.
+Increase samples/epochs for better accuracy.
 
-Ensure the data/ folder exists with proper CSV files.
+Ensure data/ exists and has proper CSV files.
 
-Optional
-Modify scripts for batch predictions or custom paths.
+results/ is created automatically and is not tracked by Git.
 
-Add your own datasets in data/ for training.
-
-yaml
-Copy code
-
----
-
-After creating this `README.md` file:  
-
-```bash
-git add README.md
-git commit -m "Add README with instructions and folder structure"
-git push
+Quick Start
+git clone https://github.com/AadiDaksh/bert-fake-news-detector.git
+cd bert-fake-news-detector
+conda create -n fake_news_venv python=3.10
+conda activate fake_news_venv
+pip install pandas scikit-learn torch transformers datasets
+python bert_fake_news.py
+python predict_fake_news.py
