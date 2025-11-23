@@ -1,0 +1,9 @@
+# Ignore trained model files
+results/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Optional: environment files
+.env
